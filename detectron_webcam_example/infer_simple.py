@@ -60,7 +60,7 @@ def gen():
     cfg.TEST.WEIGHTS = '/detectron/model_final.pkl'
     cfg.NUM_GPUS = 1
     assert_and_infer_cfg()
-    model = infer_engine.initialize_model_from_cfg()
+    model = infer_engine.initialize_model_from_cfg(cfg.TEST.WEIGHTS)
     dummy_coco_dataset = dummy_datasets.get_coco_dataset()
 
     #set webcam
