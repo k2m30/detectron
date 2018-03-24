@@ -56,8 +56,8 @@ cv2.ocl.setUseOpenCL(False)
 
 def gen():
     logger = logging.getLogger(__name__)
-    merge_cfg_from_file('configs/12_2017_baselines/e2e_mask_rcnn_R-101-FPN_2x.yaml')
-    cfg.TEST.WEIGHTS = '12_2017_baselines/e2e_mask_rcnn_R-101-FPN_2x.yaml.02_32_51.SgT4y1cO/output/train/coco_2014_train:coco_2014_valminusminival/generalized_rcnn/model_final.pkl'
+    merge_cfg_from_file('/detectron/e2e_mask_rcnn_R-101-FPN_2x.yaml')
+    cfg.TEST.WEIGHTS = '/detectron/model_final.pkl'
     cfg.NUM_GPUS = 1
     assert_and_infer_cfg()
     model = infer_engine.initialize_model_from_cfg()
