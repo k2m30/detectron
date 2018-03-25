@@ -42,11 +42,11 @@ def main():
     # cam = cv2.VideoCapture("rtsp://192.168.128.12:554/mpeg4cif")
     cam = cv2.VideoCapture("rtsp://192.168.128.11:554/av0_1")
 
-    n = 0
-    while n < 10:
+    tmp_file_name = '/tmp/tmp.jpg'
+    while True:
         ret_val, im = cam.read()
-        cv2.imwrite(str(n) + '.jpg', im)
-        im = cv2.imread(str(n) + '.jpg')
+        cv2.imwrite(tmp_file_name , im)
+        im = cv2.imread(tmp_file_name)
 
         timers = defaultdict(Timer)
         t = time.time()
@@ -60,7 +60,7 @@ def main():
 
         vis_utils.vis_one_image(
             im[:, :, ::-1],  # BGR -> RGB for visualization
-            str(n) + '.jpg',
+            tmp_file_name,
             '/tmp',
             cls_boxes,
             cls_segms,
@@ -71,8 +71,6 @@ def main():
             thresh=0.7,
             kp_thresh=2
         )
-        n += 1
-
 
 if __name__ == '__main__':
     workspace.GlobalInit(['caffe2', '--caffe2_log_level=0'])
