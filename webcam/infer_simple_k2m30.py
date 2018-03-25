@@ -77,8 +77,8 @@ def main():
             ext='png'
         )
         n += 1
-        n = n % 1000
-        time.sleep(0.05)
+        n = n % 10
+        # time.sleep(0.05)
 
 
 if __name__ == '__main__':
