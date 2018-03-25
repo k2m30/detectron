@@ -37,9 +37,6 @@ app = Flask(__name__)
 
 def gen():
     logger = logging.getLogger(__name__)
-    merge_cfg_from_file('/detectron/e2e_mask_rcnn_R-101-FPN_2x.yaml')
-    cfg.NUM_GPUS = 1
-    assert_and_infer_cfg()
     model = infer_engine.initialize_model_from_cfg('/detectron/models/model_final.pkl')
     dummy_coco_dataset = dummy_datasets.get_coco_dataset()
     # cam = cv2.VideoCapture("rtsp://192.168.128.12:554/mpeg4cif")
@@ -92,6 +89,10 @@ def index():
 
 if __name__ == '__main__':
     workspace.GlobalInit(['caffe2', '--caffe2_log_level=0'])
+    merge_cfg_from_file('/detectron/e2e_mask_rcnn_R-101-FPN_2x.yaml')
+    cfg.NUM_GPUS = 1
+    assert_and_infer_cfg()
+
     utils.logging.setup_logging(__name__)
     # main()
     app.run(host='0.0.0.0', threaded=True)
