@@ -115,7 +115,7 @@ def main(args):
 
         ret_val, im = cam.read()
         cv2.imwrite('2.jpg', im)
-        im = cv2.imread('2.jpp')
+        im = cv2.imread('2.jpg')
 
         timers = defaultdict(Timer)
         t = time.time()
