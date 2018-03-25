@@ -60,7 +60,7 @@ def main():
 
         vis_utils.vis_one_image(
             im[:, :, ::-1],  # BGR -> RGB for visualization
-            '22.jpg',
+            '23.jpg',
             '/tmp',
             cls_boxes,
             cls_segms,
@@ -70,7 +70,7 @@ def main():
             show_class=True,
             thresh=0.7,
             kp_thresh=2,
-
+            ext = 'jpg'
         )
 
 if __name__ == '__main__':
