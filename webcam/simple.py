@@ -9,9 +9,10 @@ def gen():
         # ret, jpeg = cv2.imencode('.jpg', im)
         jpeg = open('/tmp/23.jpg','r')
         res = b''.join(jpeg.readlines())
-        print('yield')
+        jpeg.close()
+        # print('yield')
         yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + res + b'\r\n\r\n')
-        break
+
 
 @app.route('/')
 def index():
