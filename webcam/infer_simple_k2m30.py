@@ -69,7 +69,8 @@ def main():
             box_alpha=0.3,
             show_class=True,
             thresh=0.7,
-            kp_thresh=2
+            kp_thresh=2,
+            ext = 'jpg'
         )
 
 if __name__ == '__main__':
