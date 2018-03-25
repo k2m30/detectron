@@ -21,7 +21,7 @@ def gen():
         else:
             print file_name + ' not found'
         n += 1
-        n = n % 10
+        n = n % 1000
 
 
 @app.route('/')
