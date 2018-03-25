@@ -16,11 +16,11 @@ def gen():
             res = b''.join(jpeg.readlines())
             jpeg.close()
             print(n)
-            n += 1
-            n = n % 10
             yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + res + b'\r\n\r\n')
         else:
-            print file_name + 'not found'
+            print file_name + ' not found'
+        n += 1
+        n = n % 10
 
 
 @app.route('/')
