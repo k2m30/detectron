@@ -76,6 +76,7 @@ def main():
         )
         n += 1
         n = n % 1000
+        time.sleep(0.2)
 
 
 if __name__ == '__main__':
