@@ -45,6 +45,7 @@ def main():
     n = 0
     tmp_file_name = '/tmp/tmp.jpg'
     while True:
+        os.remove(tmp_file_name)
         ret_val, im = cam.read()
         cv2.imwrite(tmp_file_name, im)
         im = cv2.imread(tmp_file_name)
