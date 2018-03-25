@@ -93,13 +93,13 @@ def parse_args():
 
 def main(args):
     logger = logging.getLogger(__name__)
-    merge_cfg_from_file(args.cfg)
+    merge_cfg_from_file('/detectron/e2e_mask_rcnn_R-101-FPN_2x.yaml')
     cfg.NUM_GPUS = 1
-    args.weights = cache_url(args.weights, cfg.DOWNLOAD_CACHE)
     assert_and_infer_cfg()
-    model = infer_engine.initialize_model_from_cfg(args.weights)
+    model = infer_engine.initialize_model_from_cfg('/detectron/models/model_final.pkl')
     dummy_coco_dataset = dummy_datasets.get_coco_dataset()
     # cam = cv2.VideoCapture("rtsp://192.168.128.12:554/mpeg4cif")
+    tmp_file_name = 'tmp.jpg'
     cam = cv2.VideoCapture("rtsp://192.168.128.11:554/av0_1")
 
     if os.path.isdir(args.im_or_folder):
@@ -114,8 +114,8 @@ def main(args):
         logger.info('Processing {} -> {}'.format(im_name, out_name))
 
         ret_val, im = cam.read()
-        cv2.imwrite('2.jpg', im)
-        im = cv2.imread('2.jpg')
+        cv2.imwrite(tmp_file_name, im)
+        im = cv2.imread(tmp_file_name)
 
         timers = defaultdict(Timer)
         t = time.time()
@@ -134,7 +134,7 @@ def main(args):
 
         vis_utils.vis_one_image(
             im[:, :, ::-1],  # BGR -> RGB for visualization
-            '2.jpg',
+            tmp_file_name,
             args.output_dir,
             cls_boxes,
             cls_segms,
