@@ -134,7 +134,7 @@ def main(args):
 
         vis_utils.vis_one_image(
             im[:, :, ::-1],  # BGR -> RGB for visualization
-            im_name,
+            '2.jpg',
             args.output_dir,
             cls_boxes,
             cls_segms,
