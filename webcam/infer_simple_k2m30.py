@@ -56,6 +56,7 @@ def main():
                 model, im, None, timers=timers
             )
         logger.info('Inference time: {:.3f}s'.format(time.time() - t))
+        logger.info(str(n) + '.jpg')
         for k, v in timers.items():
             logger.info(' | {}: {:.3f}s'.format(k, v.average_time))
 
