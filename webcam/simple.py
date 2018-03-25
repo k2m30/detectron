@@ -3,14 +3,18 @@ from flask import Flask, render_template, Response
 
 app = Flask(__name__)
 
+
 def gen():
+    n = 0
     while True:
         # im = cv2.imread('/tmp/23.jpg')
         # ret, jpeg = cv2.imencode('.jpg', im)
-        jpeg = open('/tmp/23.jpg','r')
+        jpeg = open('/tmp/' + str(n) + '.jpg', 'r')
         res = b''.join(jpeg.readlines())
         jpeg.close()
-        print('yield')
+        print(n)
+        n += 1
+        n = n % 10
         yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + res + b'\r\n\r\n')
 
 
