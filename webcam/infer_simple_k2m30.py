@@ -70,7 +70,6 @@ def main():
             show_class=True,
             thresh=0.7,
             kp_thresh=2,
-            ext = 'jpg'
         )
 
 if __name__ == '__main__':
