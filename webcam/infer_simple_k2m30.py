@@ -78,7 +78,7 @@ def main():
         )
         n += 1
         n = n % 10
-        # time.sleep(0.05)
+        time.sleep(0.1)
 
 
 if __name__ == '__main__':
