@@ -32,6 +32,7 @@ c2_utils.import_detectron_ops()
 # thread safe and causes unwanted GPU memory allocations.
 cv2.ocl.setUseOpenCL(False)
 
+
 def main():
     logger = logging.getLogger(__name__)
     merge_cfg_from_file('/detectron/e2e_mask_rcnn_R-101-FPN_2x.yaml')
@@ -41,11 +42,11 @@ def main():
     dummy_coco_dataset = dummy_datasets.get_coco_dataset()
     # cam = cv2.VideoCapture("rtsp://192.168.128.12:554/mpeg4cif")
     cam = cv2.VideoCapture("rtsp://192.168.128.11:554/av0_1")
-
+    n = 0
     tmp_file_name = '/tmp/tmp.jpg'
     while True:
         ret_val, im = cam.read()
-        cv2.imwrite(tmp_file_name , im)
+        cv2.imwrite(tmp_file_name, im)
         im = cv2.imread(tmp_file_name)
 
         timers = defaultdict(Timer)
@@ -60,7 +61,7 @@ def main():
 
         vis_utils.vis_one_image(
             im[:, :, ::-1],  # BGR -> RGB for visualization
-            '23',
+            str(n),
             '/tmp',
             cls_boxes,
             cls_segms,
@@ -70,8 +71,11 @@ def main():
             show_class=True,
             thresh=0.7,
             kp_thresh=2,
-            ext = 'jpg'
+            ext='jpg'
         )
+        n += 1
+        n = n % 10
+
 
 if __name__ == '__main__':
     workspace.GlobalInit(['caffe2', '--caffe2_log_level=0'])
