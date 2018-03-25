@@ -57,7 +57,7 @@ cv2.ocl.setUseOpenCL(False)
 def gen():
     logger = logging.getLogger(__name__)
     merge_cfg_from_file('/detectron/e2e_mask_rcnn_R-101-FPN_2x.yaml')
-    cfg.NUM_GPUS = 1
+    # cfg.NUM_GPUS = 1
     assert_and_infer_cfg()
     model = infer_engine.initialize_model_from_cfg('/detectron/models/model_final.pkl')
     dummy_coco_dataset = dummy_datasets.get_coco_dataset()
@@ -85,20 +85,20 @@ def gen():
                 'rest (caches and auto-tuning need to warm up)'
             )
 
-        image = vis_utils.vis_one_image(
-            im[:, :, ::-1],  # BGR -> RGB for visualization
-            "dummy_name",
-            '',
-            cls_boxes,
-            cls_segms,
-            cls_keyps,
-            dataset=dummy_coco_dataset,
-            box_alpha=0.3,
-            show_class=True,
-            thresh=0.7,
-            kp_thresh=2
-        )
-        ret, jpeg = cv2.imencode('.jpg', image)
+        # image = vis_utils.vis_one_image(
+        #     im[:, :, ::-1],  # BGR -> RGB for visualization
+        #     "dummy_name",
+        #     '',
+        #     cls_boxes,
+        #     cls_segms,
+        #     cls_keyps,
+        #     dataset=dummy_coco_dataset,
+        #     box_alpha=0.3,
+        #     show_class=True,
+        #     thresh=0.7,
+        #     kp_thresh=2
+        # )
+        ret, jpeg = cv2.imencode('.jpg', im)
         yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + jpeg.tobytes() + b'\r\n\r\n')
 
 
