@@ -135,6 +135,7 @@ def main():
             thresh=0.7,
             kp_thresh=2
         )
+        n += 1
 
 
 if __name__ == '__main__':
