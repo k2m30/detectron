@@ -19,6 +19,8 @@ def gen():
             n += 1
             n = n % 10
             yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + res + b'\r\n\r\n')
+        else:
+            print file_name + 'not found'
 
 
 @app.route('/')
