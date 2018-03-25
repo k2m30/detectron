@@ -5,9 +5,11 @@ app = Flask(__name__)
 
 def gen():
     while True:
-        im = cv2.imread('/tmp/23.jpg')
-        ret, jpeg = cv2.imencode('.jpg', im)
-        yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + jpeg.tobytes() + b'\r\n\r\n')
+        # im = cv2.imread('/tmp/23.jpg')
+        # ret, jpeg = cv2.imencode('.jpg', im)
+        jpeg = open('/tmp/23.jpg','r')
+        res = b''.join(jpeg.readlines())
+        yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + res + b'\r\n\r\n')
         break
 
 @app.route('/')
