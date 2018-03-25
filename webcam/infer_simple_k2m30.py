@@ -36,7 +36,7 @@ cv2.ocl.setUseOpenCL(False)
 def main():
     logger = logging.getLogger(__name__)
     merge_cfg_from_file('/detectron/e2e_mask_rcnn_R-101-FPN_2x.yaml')
-    cfg.NUM_GPUS = 4
+    cfg.NUM_GPUS = 2
     assert_and_infer_cfg()
     model = infer_engine.initialize_model_from_cfg('/detectron/models/model_final.pkl')
     dummy_coco_dataset = dummy_datasets.get_coco_dataset()
@@ -60,11 +60,6 @@ def main():
         for k, v in timers.items():
             logger.info(' | {}: {:.3f}s'.format(k, v.average_time))
 
-        file_name = '/tmp/' + str(n) + '.jpg'
-        # if os.path.exists(file_name):
-        #     os.remove(file_name)
-
-
         vis_utils.vis_one_image(
             im[:, :, ::-1],  # BGR -> RGB for visualization
             str(n),
@@ -80,7 +75,7 @@ def main():
             ext='jpg'
         )
         n += 1
-        n = n % 10
+        n = n % 1000
 
 
 if __name__ == '__main__':
