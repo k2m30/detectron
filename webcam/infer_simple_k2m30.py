@@ -77,7 +77,7 @@ def main():
             ext='png'
         )
         n += 1
-        n = n % 10
+        n = n % 1000
         time.sleep(0.1)
 
 
