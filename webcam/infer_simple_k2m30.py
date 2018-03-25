@@ -99,6 +99,7 @@ def main(args):
     assert_and_infer_cfg()
     model = infer_engine.initialize_model_from_cfg(args.weights)
     dummy_coco_dataset = dummy_datasets.get_coco_dataset()
+    cam = cv2.VideoCapture("rtsp://192.168.128.12:554/mpeg4cif")
 
     if os.path.isdir(args.im_or_folder):
         im_list = glob.iglob(args.im_or_folder + '/*.' + args.image_ext)
@@ -110,7 +111,8 @@ def main(args):
             args.output_dir, '{}'.format(os.path.basename(im_name) + '.pdf')
         )
         logger.info('Processing {} -> {}'.format(im_name, out_name))
-        im = cv2.imread(im_name)
+
+        im = cam.read()
         timers = defaultdict(Timer)
         t = time.time()
         with c2_utils.NamedCudaScope(0):
