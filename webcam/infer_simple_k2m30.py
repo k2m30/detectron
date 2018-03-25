@@ -77,7 +77,7 @@ def gen():
         im = cv2.imread(str(n) + '.jpg')
         # ret, jpeg = cv2.imencode('.jpg', im)
         n += 1
-        yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + jpeg.tobytes() + b'\r\n\r\n')
+        yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + im.tobytes() + b'\r\n\r\n')
 
 
 @app.route('/video_feed')
