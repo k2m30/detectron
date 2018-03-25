@@ -100,7 +100,7 @@ def main(args):
     model = infer_engine.initialize_model_from_cfg(args.weights)
     dummy_coco_dataset = dummy_datasets.get_coco_dataset()
     # cam = cv2.VideoCapture("rtsp://192.168.128.12:554/mpeg4cif")
-    cam = cv2.VideoCapture("rtsp://192.168.128.13:554/user=admin_password=tlJwpbo6_channel=1_stream=0.sdp?real_stream")
+    cam = cv2.VideoCapture("rtsp://192.168.128.11:554/av0_1")
 
     if os.path.isdir(args.im_or_folder):
         im_list = glob.iglob(args.im_or_folder + '/*.' + args.image_ext)

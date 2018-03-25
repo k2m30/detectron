@@ -64,7 +64,9 @@ def gen():
     dummy_coco_dataset = dummy_datasets.get_coco_dataset()
 
     #set webcam
-    cam = cv2.VideoCapture("rtsp://192.168.128.12:554/mpeg4cif")
+    # cam = cv2.VideoCapture("rtsp://192.168.128.12:554/mpeg4cif")
+    # cam = cv2.VideoCapture("rtsp://192.168.128.13:554/user=admin_password=tlJwpbo6_channel=1_stream=1.sdp?real_stream")
+    cam = cv2.VideoCapture("rtsp://192.168.128.11:554/av0_1")
     while True:
         #Fetch image from camera
         ret_val, im = cam.read()
