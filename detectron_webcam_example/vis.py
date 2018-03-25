@@ -254,9 +254,6 @@ def vis_one_image(
         im, im_name, output_dir, boxes, segms=None, keypoints=None, thresh=0.9,
         kp_thresh=2, dpi=200, box_alpha=0.0, dataset=None, show_class=False,
         ext='jpg'):
-    """Visual debugging of detections."""
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
 
     if isinstance(boxes, list):
         boxes, segms, keypoints, classes = convert_from_cls_format(
@@ -391,12 +388,13 @@ def vis_one_image(
     image = fig2data(fig)
     image = image[...,::-1]
 
-    cv2.imshow("img", image)
-    cv2.waitKey(1)
+    # cv2.imshow("img", image)
+    # cv2.waitKey(1)
 
     # output_name = os.path.basename(im_name) + '.' + ext
     # fig.savefig(os.path.join(output_dir, '{}'.format(output_name)), dpi=dpi)
     plt.close('all')
+    return image
 
 
 def fig2data ( fig ):
