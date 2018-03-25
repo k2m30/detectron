@@ -114,7 +114,8 @@ def main(args):
         logger.info('Processing {} -> {}'.format(im_name, out_name))
 
         ret_val, im = cam.read()
-        ret, im = cv2.imencode('.jpg', im)
+        cv2.imwrite('2.jpg', im)
+        im = cv2.imread('2.jpp')
 
         timers = defaultdict(Timer)
         t = time.time()
