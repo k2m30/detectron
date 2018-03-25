@@ -61,8 +61,8 @@ def main():
             logger.info(' | {}: {:.3f}s'.format(k, v.average_time))
 
         file_name = '/tmp/' + str(n) + '.jpg'
-        if os.path.exists(file_name):
-            os.remove(file_name)
+        # if os.path.exists(file_name):
+        #     os.remove(file_name)
 
 
         vis_utils.vis_one_image(

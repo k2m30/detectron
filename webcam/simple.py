@@ -12,9 +12,10 @@ def gen():
         # ret, jpeg = cv2.imencode('.jpg', im)
         file_name = '/tmp/' + str(n) + '.jpg'
         if os.path.exists(file_name):
-            jpeg = open('/tmp/' + str(n) + '.jpg', 'r')
+            jpeg = open(file_name, 'r')
             res = b''.join(jpeg.readlines())
             jpeg.close()
+            os.remove(file_name)
             print(n)
             yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + res + b'\r\n\r\n')
         else:
