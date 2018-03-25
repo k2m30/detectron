@@ -112,9 +112,9 @@ def main(args):
         )
         logger.info('Processing {} -> {}'.format(im_name, out_name))
 
-        img = cam.read()
-        cv2.imwrite('1.jpg', img)
-        im = cv2.imread('1.jpg')
+        ret_val, im = cam.read()
+        ret, im = cv2.imencode('.jpg', im)
+
         timers = defaultdict(Timer)
         t = time.time()
         with c2_utils.NamedCudaScope(0):
