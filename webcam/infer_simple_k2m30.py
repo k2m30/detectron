@@ -70,6 +70,7 @@ def main():
             show_class=True,
             thresh=0.7,
             kp_thresh=2,
+
         )
 
 if __name__ == '__main__':
