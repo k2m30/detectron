@@ -1,6 +1,7 @@
 import cv2  # NOQA (Must import before importing caffe2 due to bug in cv2)
 from flask import Flask, render_template, Response
 import os
+from time import sleep
 
 app = Flask(__name__)
 
@@ -15,13 +16,14 @@ def gen():
             jpeg = open(file_name, 'r')
             res = b''.join(jpeg.readlines())
             jpeg.close()
-            os.remove(file_name)
+            # os.remove(file_name)
             print(n)
             yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + res + b'\r\n\r\n')
         else:
             print file_name + ' not found'
         n += 1
         n = n % 1000
+        sleep(0.2)
 
 
 @app.route('/')
