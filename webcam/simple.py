@@ -10,7 +10,7 @@ def gen():
         jpeg = open('/tmp/23.jpg','r')
         res = b''.join(jpeg.readlines())
         jpeg.close()
-        # print('yield')
+        print('yield')
         yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + res + b'\r\n\r\n')
 
 
