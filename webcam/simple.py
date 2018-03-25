@@ -10,7 +10,7 @@ def gen():
     while True:
         # im = cv2.imread('/tmp/23.jpg')
         # ret, jpeg = cv2.imencode('.jpg', im)
-        file_name = '/tmp' + str(n) + '.jpg'
+        file_name = '/tmp/' + str(n) + '.jpg'
         if os._exists(file_name):
             jpeg = open('/tmp/' + str(n) + '.jpg', 'r')
             res = b''.join(jpeg.readlines())

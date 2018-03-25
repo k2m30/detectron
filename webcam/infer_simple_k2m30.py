@@ -60,7 +60,7 @@ def main():
         for k, v in timers.items():
             logger.info(' | {}: {:.3f}s'.format(k, v.average_time))
 
-        file_name = '/tmp' + str(n) + '.jpg'
+        file_name = '/tmp/' + str(n) + '.jpg'
         if os._exists(file_name):
             os.remove(file_name)
 
