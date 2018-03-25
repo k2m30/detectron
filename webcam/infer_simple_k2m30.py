@@ -99,23 +99,18 @@ def main(args):
     model = infer_engine.initialize_model_from_cfg('/detectron/models/model_final.pkl')
     dummy_coco_dataset = dummy_datasets.get_coco_dataset()
     # cam = cv2.VideoCapture("rtsp://192.168.128.12:554/mpeg4cif")
-    tmp_file_name = 'tmp.jpg'
+    # tmp_file_name = 'tmp.jpg'
     cam = cv2.VideoCapture("rtsp://192.168.128.11:554/av0_1")
 
-    if os.path.isdir(args.im_or_folder):
-        im_list = glob.iglob(args.im_or_folder + '/*.' + args.image_ext)
-    else:
-        im_list = [args.im_or_folder]
-
-    for i, im_name in enumerate(im_list):
-        out_name = os.path.join(
-            args.output_dir, '{}'.format(os.path.basename(im_name) + '.pdf')
-        )
-        logger.info('Processing {} -> {}'.format(im_name, out_name))
-
+    # if os.path.isdir(args.im_or_folder):
+    #     im_list = glob.iglob(args.im_or_folder + '/*.' + args.image_ext)
+    # else:
+    #     im_list = [args.im_or_folder]
+    n = 0
+    while n < 10:
         ret_val, im = cam.read()
-        cv2.imwrite(tmp_file_name, im)
-        im = cv2.imread(tmp_file_name)
+        cv2.imwrite(str(n) + '.jpg', im)
+        im = cv2.imread(str(n) + '.jpg')
 
         timers = defaultdict(Timer)
         t = time.time()
@@ -126,15 +121,10 @@ def main(args):
         logger.info('Inference time: {:.3f}s'.format(time.time() - t))
         for k, v in timers.items():
             logger.info(' | {}: {:.3f}s'.format(k, v.average_time))
-        if i == 0:
-            logger.info(
-                ' \ Note: inference on the first image will be slower than the '
-                'rest (caches and auto-tuning need to warm up)'
-            )
 
         vis_utils.vis_one_image(
             im[:, :, ::-1],  # BGR -> RGB for visualization
-            tmp_file_name,
+            str(n) + '.jpg',
             '/tmp',
             cls_boxes,
             cls_segms,
