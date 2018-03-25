@@ -91,7 +91,7 @@ def parse_args():
     return parser.parse_args()
 
 
-def main(args):
+def main():
     logger = logging.getLogger(__name__)
     merge_cfg_from_file('/detectron/e2e_mask_rcnn_R-101-FPN_2x.yaml')
     cfg.NUM_GPUS = 1
@@ -140,5 +140,5 @@ def main(args):
 if __name__ == '__main__':
     workspace.GlobalInit(['caffe2', '--caffe2_log_level=0'])
     utils.logging.setup_logging(__name__)
-    args = parse_args()
-    main(args)
+    # args = parse_args()
+    main()
