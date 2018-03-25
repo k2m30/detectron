@@ -26,13 +26,16 @@ import datasets.dummy_datasets as dummy_datasets
 import utils.c2 as c2_utils
 import utils.logging
 import utils.vis as vis_utils
+from flask import Flask, render_template, Response
 
 c2_utils.import_detectron_ops()
 # OpenCL may be enabled by default in OpenCV3; disable it because it's not
 # thread safe and causes unwanted GPU memory allocations.
 cv2.ocl.setUseOpenCL(False)
 
-def main():
+app = Flask(__name__)
+
+def gen():
     logger = logging.getLogger(__name__)
     merge_cfg_from_file('/detectron/e2e_mask_rcnn_R-101-FPN_2x.yaml')
     cfg.NUM_GPUS = 1
@@ -71,10 +74,23 @@ def main():
             thresh=0.7,
             kp_thresh=2
         )
-        n += 1
+        im = cv2.imread(str(n) + '.jpg')
+        ret, jpeg = cv2.imencode('.jpg', im)
+        yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + jpeg.tobytes() + b'\r\n\r\n')
+        
+
+@app.route('/video_feed')
+def video_feed():
+    return Response(gen(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 
 
 if __name__ == '__main__':
     workspace.GlobalInit(['caffe2', '--caffe2_log_level=0'])
     utils.logging.setup_logging(__name__)
-    main()
+    # main()
+    app.run(host='0.0.0.0', threaded=True)
