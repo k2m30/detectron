@@ -60,7 +60,7 @@ def main():
 
         vis_utils.vis_one_image(
             im[:, :, ::-1],  # BGR -> RGB for visualization
-            tmp_file_name,
+            '22.jpg',
             '/tmp',
             cls_boxes,
             cls_segms,
