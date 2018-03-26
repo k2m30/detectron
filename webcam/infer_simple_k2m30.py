@@ -80,7 +80,7 @@ def main():
         n = n % 1000
         time.sleep(0.1)
         print(image)
-        cv2.imwrite(str(n) + '.png', image)
+        cv2.imwrite(str(n) + '.jpg', image)
 
 
 if __name__ == '__main__':
