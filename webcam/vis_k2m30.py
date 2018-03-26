@@ -385,13 +385,11 @@ def vis_one_image(
                     line, color=colors[len(kp_lines) + 1], linewidth=1.0,
                     alpha=0.7)
 
-    # output_name = os.path.basename(im_name) + '.' + ext
-    # fig.savefig(os.path.join(output_dir, '{}'.format(output_name)), dpi=dpi)
-    image = fig2data(fig)
-    image = image[..., ::-1]
-    plt.close(fig)
-
-    return image
+    output_name = os.path.basename(im_name) + '.' + ext
+    fig.savefig(os.path.join(output_dir, '{}'.format(output_name)), dpi=dpi)
+    # image = fig2data(fig)
+    # image = image[..., ::-1]
+    return fig
 
 
 def fig2data(fig):

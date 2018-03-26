@@ -77,13 +77,13 @@ def main():
             ext='png'
         )
         time.sleep(0.1)
-        if data == None:
-            logger.info(cls_boxes)
-
-        else:
-            n += 1
-            n = n % 1000
-            cv2.imwrite('/tmp/' + str(n) + '.jpg', data)
+        # if data == None:
+        #     logger.info(cls_boxes)
+        #
+        # else:
+        n += 1
+        n = n % 1000
+        # cv2.imwrite('/tmp/' + str(n) + '.jpg', data)
 
 
 if __name__ == '__main__':
