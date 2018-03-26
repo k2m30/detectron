@@ -79,6 +79,7 @@ def main():
         n += 1
         n = n % 1000
         time.sleep(0.1)
+        print(image)
         cv2.imwrite(image, str(n) + '.png')
 
 
