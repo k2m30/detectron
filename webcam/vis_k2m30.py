@@ -390,13 +390,13 @@ def vis_one_image(
     # time.sleep(1)
     # image = fig2data(fig)
     # image = image[..., ::-1]
-    data = np.fromstring(fig.canvas.tostring_rgb(), dtype=np.uint8, sep='')
-    data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
-    print(data.shape())
-    time.sleep(1)
+    # data = np.fromstring(fig.canvas.tostring_rgb(), dtype=np.uint8, sep='')
+    # data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+    print(im_name + ' processed')
+    # time.sleep(1)
     plt.close(fig)
 
-    return data
+    # return data
 
 
 def fig2data(fig):
