@@ -40,8 +40,8 @@ def main():
     assert_and_infer_cfg()
     model = infer_engine.initialize_model_from_cfg('/detectron/models/model_final.pkl')
     dummy_coco_dataset = dummy_datasets.get_coco_dataset()
-    cam = cv2.VideoCapture("rtsp://192.168.128.12:554/mpeg4cif")
-    # cam = cv2.VideoCapture("rtsp://192.168.128.11:554/av0_1")
+    # cam = cv2.VideoCapture("rtsp://192.168.128.12:554/mpeg4cif")
+    cam = cv2.VideoCapture("rtsp://192.168.128.11:554/av0_1")
     # cam = cv2.VideoCapture("http://192.168.128.14/video.cgi")
     n = 0
     tmp_file_name = '/tmp/tmp.jpg'
