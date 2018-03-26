@@ -391,7 +391,7 @@ def vis_one_image(
     # image = fig2data(fig)
     # image = image[..., ::-1]
     plt.close('all')
-    return image
+    # return image
 
 
 def fig2data(fig):
