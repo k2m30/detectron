@@ -17,7 +17,7 @@ def gen():
             res = b''.join(jpeg.readlines())
             jpeg.close()
             # os.remove(file_name)
-            print(n)
+            # print(n)
             yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + res + b'\r\n\r\n')
         else:
             print file_name + ' not found'
