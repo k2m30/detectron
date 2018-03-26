@@ -79,7 +79,7 @@ def main():
         n += 1
         n = n % 1000
         time.sleep(0.1)
-        logger.info(data.shape)
+        logger.info(data)
         cv2.imwrite('/tmp/' + str(n) + '.jpg', data)
 
 
