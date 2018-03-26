@@ -57,7 +57,7 @@ def main():
                 model, im, None, timers=timers
             )
         data = vis_utils.vis_one_image_opencv(
-            im[:, :, ::-1],  # BGR -> RGB for visualization
+            im,  # BGR -> RGB for visualization
             cls_boxes,
             cls_segms,
             cls_keyps,
