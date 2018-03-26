@@ -76,7 +76,7 @@ def main():
             kp_thresh=2,
             ext='png'
         )
-        time.sleep(0.1)
+        # time.sleep(0.1)
         # if data == None:
         #     logger.info(cls_boxes)
         #
