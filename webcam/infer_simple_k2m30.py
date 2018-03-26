@@ -68,7 +68,7 @@ def main():
             show_class=True,
             thresh=0.7,
             kp_thresh=2,
-            ext='png'
+            # ext='png'
         )
         # time.sleep(0.1)
         # if data == None:
@@ -79,7 +79,7 @@ def main():
         n = n % 10
 
         logger.info(data)
-        # cv2.imwrite('/tmp/' + str(n) + '.jpg', data)
+        cv2.imwrite('/tmp/' + str(n) + '.jpg', data)
 
 
 if __name__ == '__main__':
