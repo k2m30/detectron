@@ -390,7 +390,7 @@ def vis_one_image(
     time.sleep(1)
     # image = fig2data(fig)
     # image = image[..., ::-1]
-    plt.close('all')
+    plt.close(fig)
     # return image
 
 
