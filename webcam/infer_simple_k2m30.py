@@ -44,14 +44,16 @@ def main():
     cam = cv2.VideoCapture("rtsp://192.168.128.11:554/av0_1")
     n = 0
     tmp_file_name = '/tmp/tmp.jpg'
+    im0 = 0
+    im1 = 0
     while True:
-        if os.path.exists(tmp_file_name):
-            os.remove(tmp_file_name)
+
         ret_val, im = cam.read()
         cv2.imwrite(tmp_file_name, im)
         im = cv2.imread(tmp_file_name)
-        logger.info(im)
-
+        im0 = im
+        logger.info(im0 == im1)
+        im1 = im
         timers = defaultdict(Timer)
         # t = time.time()
         with c2_utils.NamedCudaScope(0):
