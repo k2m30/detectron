@@ -11,7 +11,7 @@ def gen():
     while True:
         # im = cv2.imread('/tmp/23.jpg')
         # ret, jpeg = cv2.imencode('.jpg', im)
-        file_name = '/tmp/' + str(n) + '.png'
+        file_name = '/tmp/' + str(n) + '.jpg'
         if os.path.exists(file_name):
             jpeg = open(file_name, 'r')
             res = b''.join(jpeg.readlines())
