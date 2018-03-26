@@ -82,7 +82,7 @@ def main():
         #
         # else:
         n += 1
-        n = n % 1000
+        n = n % 10
         # cv2.imwrite('/tmp/' + str(n) + '.jpg', data)
 
 
