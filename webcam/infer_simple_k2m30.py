@@ -83,6 +83,8 @@ def main():
         # else:
         n += 1
         n = n % 10
+
+        logger.info(data)
         # cv2.imwrite('/tmp/' + str(n) + '.jpg', data)
 
 
