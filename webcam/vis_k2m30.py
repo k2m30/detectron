@@ -35,7 +35,7 @@ import utils.keypoints as keypoint_utils
 envu.set_up_matplotlib()
 import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon
-import Image
+import time
 
 plt.rcParams['pdf.fonttype'] = 42  # For editing in Adobe Illustrator
 
@@ -385,10 +385,11 @@ def vis_one_image(
                     line, color=colors[len(kp_lines) + 1], linewidth=1.0,
                     alpha=0.7)
 
-    # output_name = os.path.basename(im_name) + '.' + ext
-    # fig.savefig(os.path.join(output_dir, '{}'.format(output_name)), dpi=dpi)
-    image = fig2data(fig)
-    image = image[..., ::-1]
+    output_name = os.path.basename(im_name) + '.' + ext
+    fig.savefig(os.path.join(output_dir, '{}'.format(output_name)), dpi=dpi)
+    time.sleep(1)
+    # image = fig2data(fig)
+    # image = image[..., ::-1]
     plt.close('all')
     return image
 
