@@ -77,7 +77,7 @@ def main():
         n += 1
         n = n % 10
 
-        # logger.info(data)
+        logger.info(str(n) + ' saved')
         cv2.imwrite('/tmp/' + str(n) + '.jpg', data)
 
 
