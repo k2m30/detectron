@@ -76,11 +76,14 @@ def main():
             kp_thresh=2,
             ext='png'
         )
-        n += 1
-        n = n % 1000
         time.sleep(0.1)
-        logger.info(data)
-        cv2.imwrite('/tmp/' + str(n) + '.jpg', data)
+        if data == None:
+            logger.info(cls_boxes)
+
+        else:
+            n += 1
+            n = n % 1000
+            cv2.imwrite('/tmp/' + str(n) + '.jpg', data)
 
 
 if __name__ == '__main__':
