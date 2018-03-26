@@ -387,15 +387,11 @@ def vis_one_image(
 
     # output_name = os.path.basename(im_name) + '.' + ext
     # fig.savefig(os.path.join(output_dir, '{}'.format(output_name)), dpi=dpi)
-    # time.sleep(1)
-    # image = fig2data(fig)
-    # image = image[..., ::-1]
-    data = np.fromstring(fig.canvas.tostring_rgb(), dtype=np.uint8, sep='')
-    data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
-    time.sleep(1)
+    image = fig2data(fig)
+    image = image[..., ::-1]
     plt.close(fig)
 
-    return data
+    return image
 
 
 def fig2data(fig):
