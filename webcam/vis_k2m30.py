@@ -35,8 +35,7 @@ import utils.keypoints as keypoint_utils
 envu.set_up_matplotlib()
 import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-from matplotlib.figure import Figure
+import Image
 
 plt.rcParams['pdf.fonttype'] = 42  # For editing in Adobe Illustrator
 
@@ -413,3 +412,14 @@ def fig2data(fig):
     buf = buf[:, :, :3]
 
     return buf
+
+def fig2img ( fig ):
+    """
+    @brief Convert a Matplotlib figure to a PIL Image in RGBA format and return it
+    @param fig a matplotlib figure
+    @return a Python Imaging Library ( PIL ) image
+    """
+    # put the figure pixmap into a numpy array
+    buf = fig2data ( fig )
+    w, h, d = buf.shape
+    return Image.fromstring( "RGBA", ( w ,h ), buf.tostring( ) )
