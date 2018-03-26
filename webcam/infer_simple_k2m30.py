@@ -77,8 +77,10 @@ def main():
         n += 1
         n = n % 10
 
+        file_name = '/tmp/' + str(n) + '.jpg'
+        cv2.imwrite(file_name, data)
         logger.info(str(n) + ' saved')
-        cv2.imwrite('/tmp/' + str(n) + '.jpg', data)
+        logger.info(os.path.getsize(file_name))
 
 
 if __name__ == '__main__':
