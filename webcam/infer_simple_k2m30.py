@@ -62,7 +62,7 @@ def main():
         for k, v in timers.items():
             logger.info(' | {}: {:.3f}s'.format(k, v.average_time))
 
-        vis_utils.vis_one_image(
+        data = vis_utils.vis_one_image(
             im[:, :, ::-1],  # BGR -> RGB for visualization
             str(n),
             '/tmp',
@@ -79,7 +79,7 @@ def main():
         n += 1
         n = n % 1000
         time.sleep(0.1)
-        # cv2.imwrite('/tmp/' + str(n) + '.jpg', image)
+        cv2.imwrite('/tmp/' + str(n) + '.jpg', data)
 
 
 if __name__ == '__main__':
