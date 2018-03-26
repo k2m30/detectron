@@ -35,6 +35,8 @@ import utils.keypoints as keypoint_utils
 envu.set_up_matplotlib()
 import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
 
 plt.rcParams['pdf.fonttype'] = 42  # For editing in Adobe Illustrator
 
