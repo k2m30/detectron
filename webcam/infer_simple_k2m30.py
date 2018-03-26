@@ -50,17 +50,18 @@ def main():
         ret_val, im = cam.read()
         cv2.imwrite(tmp_file_name, im)
         im = cv2.imread(tmp_file_name)
+        logger.info(im)
 
         timers = defaultdict(Timer)
-        t = time.time()
+        # t = time.time()
         with c2_utils.NamedCudaScope(0):
             cls_boxes, cls_segms, cls_keyps = infer_engine.im_detect_all(
                 model, im, None, timers=timers
             )
-        logger.info('Inference time: {:.3f}s'.format(time.time() - t))
-        logger.info(str(n) + '.jpg')
-        for k, v in timers.items():
-            logger.info(' | {}: {:.3f}s'.format(k, v.average_time))
+        # logger.info('Inference time: {:.3f}s'.format(time.time() - t))
+        # logger.info(str(n) + '.jpg')
+        # for k, v in timers.items():
+        #     logger.info(' | {}: {:.3f}s'.format(k, v.average_time))
 
         data = vis_utils.vis_one_image(
             im[:, :, ::-1],  # BGR -> RGB for visualization
