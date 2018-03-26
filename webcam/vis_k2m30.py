@@ -391,8 +391,8 @@ def vis_one_image(
     # image = fig2data(fig)
     # image = image[..., ::-1]
     data = np.fromstring(fig.canvas.tostring_rgb(), dtype=np.uint8, sep='')
-    print(data.shape)
     data = data.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+    print(data.shape())
     time.sleep(1)
     plt.close(fig)
 
