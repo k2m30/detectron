@@ -19,7 +19,10 @@ def gen():
             # os.remove(file_name)
             # print(n)
             n += 1
+            n = n % 1000
             yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + res + b'\r\n\r\n')
+            sleep(0.5)
+
         else:
             print (str(n) + ' not found. Waiting')
             sleep(0.5)
