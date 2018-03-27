@@ -50,7 +50,7 @@ def main():
     while True:
         # ret_val, im = cam.read()
         # cv2.imwrite(tmp_file_name, im)
-        im = cv2.imread('/detectron/k2m30/img' + str(n) + '.jpg')
+        im = cv2.imread('/detectron/k2m30/img/' + str(n) + '.jpg')
         timers = defaultdict(Timer)
         with c2_utils.NamedCudaScope(0):
             cls_boxes, cls_segms, cls_keyps = infer_engine.im_detect_all(
