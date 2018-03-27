@@ -41,17 +41,16 @@ def main():
     model = infer_engine.initialize_model_from_cfg('/detectron/models/model_final.pkl')
     dummy_coco_dataset = dummy_datasets.get_coco_dataset()
     # cam = cv2.VideoCapture("rtsp://192.168.128.12:554/mpeg4cif")
-    cam = cv2.VideoCapture("rtsp://192.168.128.11:554/av0_1")
+    # cam = cv2.VideoCapture("rtsp://192.168.128.11:554/av0_1")
     # cam = cv2.VideoCapture("http://192.168.128.14/video.cgi")
     n = 0
     tmp_file_name = '/tmp/tmp.jpg'
     im0 = 0
     im1 = 0
     while True:
-
-        ret_val, im = cam.read()
+        # ret_val, im = cam.read()
         # cv2.imwrite(tmp_file_name, im)
-        # im = cv2.imread(tmp_file_name)
+        im = cv2.imread('/detectron/k2m30/img' + str(n) + '.jpg')
         timers = defaultdict(Timer)
         with c2_utils.NamedCudaScope(0):
             cls_boxes, cls_segms, cls_keyps = infer_engine.im_detect_all(
