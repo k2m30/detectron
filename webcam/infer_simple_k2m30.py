@@ -75,7 +75,7 @@ def main():
         #
         # else:
         n += 1
-        n = n % 10
+        # n = n % 10
 
         file_name = '/tmp/' + str(n) + '.jpg'
         cv2.imwrite(file_name, data)

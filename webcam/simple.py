@@ -16,14 +16,13 @@ def gen():
             jpeg = open(file_name, 'r')
             res = b''.join(jpeg.readlines())
             jpeg.close()
-            os.remove(file_name)
+            # os.remove(file_name)
             # print(n)
+            n += 1
             yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + res + b'\r\n\r\n')
         else:
-            print file_name + ' not found'
-        n += 1
-        n = n % 10
-        # sleep(0.2)
+            print (str(n) + ' not found. Waiting')
+            sleep(0.2)
 
 
 @app.route('/')
