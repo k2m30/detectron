@@ -112,7 +112,7 @@ def vis_mask(img, mask, col, alpha=0.4, show_border=True, border_thick=1):
     return img.astype(np.uint8)
 
 
-def vis_class(img, pos, class_str, font_scale=0.35):
+def vis_class(img, pos, class_str, font_scale=0.9):
     """Visualizes the class."""
     x0, y0 = int(pos[0]), int(pos[1])
     # Compute text size.
