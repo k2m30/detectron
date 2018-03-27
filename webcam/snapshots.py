@@ -12,4 +12,4 @@ while n < 1000:
     cv2.imwrite('/Users/user/python/detectron/webcam/img/' + str(n)+'.jpg', im)
     n += 1
     print(n)
-    time.sleep(0.01)
+    time.sleep(0.1)

@@ -22,7 +22,7 @@ def gen():
             yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + res + b'\r\n\r\n')
         else:
             print (str(n) + ' not found. Waiting')
-            sleep(0.2)
+            sleep(0.5)
 
 
 @app.route('/')
